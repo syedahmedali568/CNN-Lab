@@ -1,0 +1,52 @@
+DHCP:
+router:
+ip pool 1
+network 110.10.1.0 mask 255.255.255.0
+gateway-list 110.10.1.1
+dns-list 110.10.1.1
+quit
+dhcp enable
+
+Interface Gigabitethernet 0/0/2
+dhcp select global
+quit
+quit
+save
+
+
+FTP:
+ftp server enable
+set default ftp-directory flash:/
+aaa
+local-user admin password cipher ezaan12
+local-user admin service-type ftp
+local-user admin privilege level 3
+quit
+quit
+save
+
+
+Telnet:
+telnet server enable
+user-interface vty 0 4
+authentication-mode password
+set authentication password cipher yourpassword
+quit
+
+
+RIP:
+rip 
+ver 2
+network (har router k interfaces jitne network se talluq hoga)
+
+
+LACP
+interface eth-trunk 1
+mode lacp-static
+switch ke each interface m jaake phir
+eth-trunk 1
+quit
+repeat for both switch and each interface.
+
+
+
